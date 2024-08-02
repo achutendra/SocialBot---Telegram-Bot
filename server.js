@@ -1,7 +1,16 @@
 import {Telegraf} from "telegraf";
 import userModel from "./src/models/User.js";
+import connectDB from "./src/config/db.js";
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
+
+try{
+    connectDB();
+    console.log("Connected to MongoDB");
+}catch(err){
+    console.log("err", err);
+    process.kill(process.pid, 'SIGTERM');
+}
 
 
 bot.start(async(ctx) => {

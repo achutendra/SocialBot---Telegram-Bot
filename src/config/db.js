@@ -3,5 +3,5 @@ import mongoose from "mongoose";
 
 export default () => {
 
-    return mongoose.connect(process.env.MONGO_URL, {
+    return mongoose.connect(process.env.MONGO_URL)
 }
